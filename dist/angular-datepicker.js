@@ -3,6 +3,13 @@
 
   'use strict';
 
+  /*
+    to speed up angular-datepicker some more see:
+    https://raw.githubusercontent.com/margareti/angular-datepicker/da4c2386b4b5cb83f736278c483f409bad7450c8/src/js/angular-datepicker.js
+    and 
+    https://github.com/720kb/angular-datepicker/issues/25
+  */
+
   var A_DAY_IN_MILLISECONDS = 86400000
     , isMobile = (function isMobile() {
 
@@ -97,8 +104,8 @@
 
       return [
       '<div class="_720kb-datepicker-calendar-days-header">',
-        '<div ng-repeat="d in daysInString">',
-          '{{d}}',
+        '<div ng-repeat="d in ::daysInString">',
+          '{{::d}}',
         '</div>',
       '</div>'
       ];
@@ -108,13 +115,13 @@
       return [
         '<div class="_720kb-datepicker-calendar-body">',
           '<a href="javascript:void(0)" ng-repeat="px in prevMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled">',
-            '{{px}}',
+            '{{::px}}',
           '</a>',
           '<a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{\'_720kb-datepicker-active\': selectedDay === item && selectedMonth === monthNumber && selectedYear === year, \'_720kb-datepicker-disabled\': !isSelectableMinDate(year + \'/\' + monthNumber + \'/\' + item ) || !isSelectableMaxDate(year + \'/\' + monthNumber + \'/\' + item) || !isSelectableDate(monthNumber, year, item), \'_720kb-datepicker-today\': item === todaysDate}" class="_720kb-datepicker-calendar-day">',
-            '{{item}}',
+            '{{::item}}',
           '</a>',
           '<a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled">',
-            '{{nx}}',
+            '{{::nx}}',
           '</a>',
         '</div>'
       ];
